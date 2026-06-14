@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tommaso Mattiuzzi – Academic Portfolio</title>
+  <!-- Tailwind CDN – neutral palette -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {},
+        // Use the default neutral colors (gray/stone) – no extra config needed
+      },
+    };
+  </script>
+</head>
+<body class="max-w-4xl mx-auto p-6 text-gray-800">
+  <!-- Navigation -->
+  <nav class="flex justify-between items-center mb-8 border-b pb-4">
+    <h1 class="text-2xl font-semibold">Tommaso Mattiuzzi</h1>
+    <ul class="flex space-x-4 text-sm">
+      <li><a href="index.html" class="text-blue-600 hover:underline">Home</a></li>
+      <li><a href="cv.html" class="text-blue-600 hover:underline">CV</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header with headshot and intro -->
+  <section class="flex flex-col md:flex-row items-center gap-6 mb-8">
+    <img src="headshot.jpg" alt="Tommaso Mattiuzzi" class="w-48 h-48 rounded-full object-cover border" />
+    <div class="flex-1">
+      <p class="text-lg leading-relaxed">
+        I am currently a Post-Doc at the CRC "Negation in Language and Beyond" (NegLaB) at Goethe University Frankfurt. I am a theoretical linguist and am passionate about the most abstract and profound aspects of our linguistic knowledge, those that account for the universal properties of human languages, and for the way in which they can differ from each other. I specialize in the study of morphosyntactic variation via a combination of traditional fieldwork, experimental methods, and computational modeling of data coming from corpora and typological databases. I am particularly interested in exploring computational methods as a way to probe formal theories of syntax and syntactic variation.
+      </p>
+    </div>
+  </section>
+
+  <!-- BibBase publications -->
+  <section class="mt-12">
+    <h2 class="text-xl font-medium mb-4">Publications</h2>
+    <div id="bibbase-widget"></div>
+    <script>
+      // Load BibBase widget – using the raw GitHub URL for the .bib file
+      (function(){
+        var d=document, s=d.createElement('script');
+        s.src='https://cdn.bibbase.org/bibbase.min.js';
+        s.onload=function(){
+          BibBase.render({
+            biburl:'https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/main/mypapers.bib',
+            container:'#bibbase-widget',
+            // Use a clean style – neutral by default
+            style:'apa',
+            // Show most recent 10 items
+            limit:10
+          });
+        };
+        d.head.appendChild(s);
+      })();
+    </script>
+  </section>
+</body>
+</html>
