@@ -1,62 +1,96 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-white antialiased">
+<html lang="en" class="antialiased">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tommaso Mattiuzzi – Academic Portfolio</title>
-  <!-- Tailwind CDN – neutral palette -->
+  <!-- Google Fonts for Playfair Display (serif) and Inter (sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
-        extend: {},
-        // Use the default neutral colors (gray/stone) – no extra config needed
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            accent: '#a7c957', // sage green built-in
+          },
+        },
       },
     };
   </script>
+  <script>
+    function showEmail(encoded, containerId) {
+      document.getElementById(containerId).innerHTML =
+        '<a href="mailto:' + atob(encoded) + '" class="text-emerald-700 hover:underline">' + atob(encoded) + '</a>';
+    }
+  </script>
 </head>
-<body class="max-w-4xl mx-auto p-6 text-gray-800">
+<body class="bg-stone-50 text-stone-900 max-w-3xl mx-auto py-12 px-6">
   <!-- Navigation -->
-  <nav class="flex justify-between items-center mb-8 border-b pb-4">
-    <h1 class="text-2xl font-semibold">Tommaso Mattiuzzi</h1>
-    <ul class="flex space-x-4 text-sm">
-      <li><a href="index.html" class="text-blue-600 hover:underline">Home</a></li>
-      <li><a href="cv.html" class="text-blue-600 hover:underline">CV</a></li>
+  <nav class="flex justify-between items-center mb-12 border-b border-stone-200 pb-4">
+    <h1 class="font-serif text-3xl md:text-4xl tracking-wider uppercase font-light text-stone-900">Tommaso Mattiuzzi</h1>
+    <ul class="flex space-x-6 font-sans text-base text-emerald-700">
+      <li><a href="index.html" class="hover:underline">Home</a></li>
+      <li><a href="cv.html" class="hover:underline">CV</a></li>
+      <li><a href="#contact" class="hover:underline">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Header with headshot and intro -->
-  <section class="flex flex-col md:flex-row items-center gap-6 mb-8">
-    <img src="headshot.jpg" alt="Tommaso Mattiuzzi" class="w-48 h-48 rounded-full object-cover border" />
-    <div class="flex-1">
+  <section class="flex flex-col md:flex-row items-start gap-8 mb-12">
+    <img src="headshot.jpg" alt="Tommaso Mattiuzzi" class="w-40 h-48 rounded-3xl object-cover border border-stone-200" />
+    <div class="flex-1 font-sans">
       <p class="text-lg leading-relaxed">
-        I am currently a Post-Doc at the CRC "Negation in Language and Beyond" (NegLaB) at Goethe University Frankfurt. I am a theoretical linguist and am passionate about the most abstract and profound aspects of our linguistic knowledge, those that account for the universal properties of human languages, and for the way in which they can differ from each other. I specialize in the study of morphosyntactic variation via a combination of traditional fieldwork, experimental methods, and computational modeling of data coming from corpora and typological databases. I am particularly interested in exploring computational methods as a way to probe formal theories of syntax and syntactic variation.
+        I am a Post-Doc at the <a href="https://www.neglab.de/" class="text-emerald-700 hover:underline">CRC "Negation in Language and Beyond" (NegLaB)</a> at Goethe University Frankfurt. 
       </p>
+      <p class="text-lg leading-relaxed mt-4">
+        I am a theoretical linguist and am drawn to the question of what underlies the universal properties of human languages and what drives their variation. My work focuses on morphosyntactic variation, combining traditional fieldwork, experimental methods, and computational modeling of corpus and typological data to probe formal theories of syntax.
+      </p>
+      <div class="mt-4">
+        <h3 class="font-semibold text-emerald-700 text-base">My research interests</h3>
+        <p class="text-stone-800 text-base mt-1">
+          (Morpho)syntactic theory, Syntactic micro- and macro-variation, Computational modeling of linguistic competence and variation
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- BibBase publications -->
-  <section class="mt-12">
-    <h2 class="text-xl font-medium mb-4">Publications</h2>
-    <div id="bibbase-widget"></div>
+  <div class="space-y-12">
+    <!-- Publications -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-emerald-700 mb-4 border-b border-stone-200 pb-2">Publications</h2>
+      <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/main/mypapers.bib&style=apa&limit=10"></script>
+    </section>
+
+    <!-- Manuscripts -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-emerald-700 mb-4 border-b border-stone-200 pb-2">Manuscripts</h2>
+      <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/main/manuscripts.bib&style=apa&limit=10"></script>
+    </section>
+
+    <!-- Recent Talks -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-emerald-700 mb-4 border-b border-stone-200 pb-2">Talks</h2>
+      <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/main/talks.bib&style=apa&limit=10"></script>
+    </section>
+  </div>
+
+  <!-- Contact -->
+  <section id="contact" class="mt-16 pt-8 border-t border-stone-200">
+    <h2 class="font-serif text-2xl font-semibold text-emerald-700 mb-4">Contact</h2>
+    <p class="font-sans text-stone-800">Feel free to reach out at:
+      <span id="email-neg"></span> or
+      <span id="email-personal"></span>
+    </p>
     <script>
-      // Load BibBase widget – using the raw GitHub URL for the .bib file
-      (function(){
-        var d=document, s=d.createElement('script');
-        s.src='https://cdn.bibbase.org/bibbase.min.js';
-        s.onload=function(){
-          BibBase.render({
-            biburl:'https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/main/mypapers.bib',
-            container:'#bibbase-widget',
-            // Use a clean style – neutral by default
-            style:'apa',
-            // Show most recent 10 items
-            limit:10
-          });
-        };
-        d.head.appendChild(s);
-      })();
+      showEmail('bWF0dGl1enppQGVtLnVuaS1mcmFua2Z1cnQuZGU=', 'email-neg');
+      showEmail('dG9tbWFzby5tYXR0aXV6emlAZ21haWwuY29t', 'email-personal');
     </script>
   </section>
 </body>
 </html>
+
