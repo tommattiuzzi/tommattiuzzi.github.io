@@ -46,6 +46,14 @@
     .bibbase-section div[style*="float: right"]:has(> a[href="//bibbase.org"]):hover {
       opacity: 0.7;
     }
+    /* Link inside BibBase-rendered note lines: match the site's emerald link
+       style (Tailwind preflight otherwise renders anchors as plain text). */
+    .bibbase-section .note a {
+      color: #047857;
+    }
+    .bibbase-section .note a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body class="bg-stone-50 text-stone-900 max-w-3xl mx-auto py-12 px-6">
@@ -82,7 +90,7 @@
     <!-- Manuscripts -->
     <section class="bibbase-section">
       <h2 class="font-serif text-2xl font-semibold text-emerald-700 mb-4 border-b border-stone-200 pb-2">Manuscripts</h2>
-      <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/master/manuscripts.bib?cb=6&jsonp=1&fullnames=1&group0=year&sort=-year&theme=simple&hidemenu=true"></script>
+      <script src="https://bibbase.org/show?bib=https://raw.githubusercontent.com/tommattiuzzi/tommattiuzzi.github.io/master/manuscripts.bib?cb=7&jsonp=1&fullnames=1&group0=year&sort=-year&theme=simple&hidemenu=true"></script>
     </section>
 
     <!-- Publications -->
